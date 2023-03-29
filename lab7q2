@@ -1,0 +1,30 @@
+let xCoord = 20;
+let yCoord = 20;
+let redchannel=60;
+let greenchannel= 220;
+let bluechannel=150;
+//let offset = 15;
+function setup() {
+  createCanvas(400, 400);
+   offset=width/7
+  noLoop();
+}
+
+function draw() {
+  //background(220);
+  for (let numOfRows = 0; numOfRows < 7; numOfRows++) {
+    for (let numOfCols = 0; numOfCols < 7; numOfCols++) {
+      //let randomColor = random(arrayOfColors);
+      drawEllipse(numOfRows * offset, numOfCols * offset,redchannel, greenchannel, bluechannel);
+      redchannel+=5
+    //  yCoord += 10;
+    //  xCoord += 10;
+    }
+  }
+}
+function drawEllipse(x, y, redchannel, greenchannel, bluechannel) {
+  push();
+  fill(redchannel, greenchannel, bluechannel);
+  ellipse(x, y, 30);
+  pop();
+}
