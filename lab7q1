@@ -1,0 +1,24 @@
+let xCoord = 20;
+let yCoord = 20;
+let offset = 15;
+let arrayOfColors = ["darksalmon", "coral", "salmon", "tomato", "palevioletred"];
+function setup() {
+  createCanvas(400, 400);
+  //noLoop();
+}
+
+function draw() {
+  //background(220);
+  for (let numOfRows = 0; numOfRows < 5; numOfRows++) {
+      let randomColor = arrayOfColors[numOfRows];
+      drawEllipse(numOfRows + xCoord, 0 + yCoord, randomColor);
+      yCoord += 10;
+      xCoord += 10;
+    }
+}
+function drawEllipse(x, y, color) {
+  push();
+  fill(color);
+  ellipse(x, y, 15);
+  pop();
+}
