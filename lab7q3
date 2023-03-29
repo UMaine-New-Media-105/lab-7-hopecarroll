@@ -1,0 +1,73 @@
+let xCoord = 20;
+let yCoord = 20;
+let redchannel = 60;
+let greenchannel = 220;
+let bluechannel = 150;
+//let offset = 15;
+function setup() {
+  createCanvas(400, 400);
+  angleMode(DEGREES)
+  star1 = {
+    x: 125,
+    y: 70,
+    scale: 0.50,
+    points: 10,
+    startAngle: 20,
+    fill: "rebeccapurple",
+  }
+  star2 = {
+    x: 300,
+    y: 200,
+    scale: 0.35,
+    points: 6,
+    fill: "orchid",
+  }
+  offset = width / 7;
+  // noLoop();
+}
+
+function draw() {
+  background(100, 150, 230);
+  for (let numOfRows = 0; numOfRows < 7; numOfRows++) {
+    for (let numOfCols = 0; numOfCols < 7; numOfCols++) {
+
+      //let randomColor = random(arrayOfColors);
+      if (mouseIsPressed) {
+        addStar(star1);
+        addStar(star2);
+      } else {
+        drawEllipse(
+          numOfRows * offset,
+          numOfCols * offset,
+          redchannel,
+          greenchannel,
+          bluechannel
+        );
+
+        //  yCoord += 10;
+        //  xCoord += 10;
+      }
+    }
+  }
+}
+function drawEllipse(x, y, redchannel, greenchannel, bluechannel) {
+  push();
+  fill(redchannel, greenchannel, bluechannel);
+  ellipse(x, y, 30);
+  pop();
+}
+function addStar(star) {
+  push();
+  noStroke();
+  let addAngle = 360 / star.points;
+  translate(star.x, star.y);
+  scale(star.scale);
+  rotate(star.startAngle);
+  fill(star.fill);
+  //loop
+  for (let pointsDrawn = 0; pointsDrawn < star.points; pointsDrawn++) {
+    rotate(addAngle);
+    triangle(5, 35, -5, -25, 60, 60);
+  }
+  pop();
+}
